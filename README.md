@@ -1,1 +1,1 @@
-A very simple project with just one test inside which basically prints "Hello Wolrd" phrasing in the console
+A very simple project with just one test inside which basically prints "Hello Wolrd" phrasing in the console.

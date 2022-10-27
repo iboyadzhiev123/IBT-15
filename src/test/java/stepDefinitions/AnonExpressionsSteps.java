@@ -43,7 +43,7 @@ public class AnonExpressionsSteps {
         if(Pattern.compile(regexPattern).matcher(email).matches())
             System.out.println(String.format("A proper email %s has been inserted",email));
         else
-            System.out.println(String.format("An improper email has been inserted",email));
+            System.out.println(String.format("A improper email %s has been inserted",email));
     }
 
     @Then("I don't wanna be bothered")

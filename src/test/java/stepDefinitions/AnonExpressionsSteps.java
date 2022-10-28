@@ -3,11 +3,11 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 
 import java.util.regex.Pattern;
 
 public class AnonExpressionsSteps {
+
     @Given("^I (am|am not) at the registration form$")
     public void iAmAtTheRegistrationForm(String optionalValue) {
         if(optionalValue.equals("am"))
@@ -24,7 +24,6 @@ public class AnonExpressionsSteps {
     @And("I insert {double} years of age")
     public void iInsertYearsOfAge(double age) {
         System.out.println(String.format("Age %s has been inserted", age));
-
     }
 
     @And("I my lucky number is {int}")
@@ -43,11 +42,27 @@ public class AnonExpressionsSteps {
         if(Pattern.compile(regexPattern).matcher(email).matches())
             System.out.println(String.format("A proper email %s has been inserted",email));
         else
-            System.out.println(String.format("A improper email %s has been inserted",email));
+            System.out.println(String.format("An improper email %s has been inserted",email));
     }
 
     @Then("I don't wanna be bothered")
     public void iDonTWannaBeBothered() {
         System.out.println("The user is chilling and doesn't care much");
     }
+
+    @Given("the person's name is {string}")
+    public void thePersonsNameIsName(String name) {
+        System.out.println(String.format("The person's name is %s",name));
+    }
+
+    @Then("the person's nationality is {string}")
+    public void thePersonsNationalityIsNationality(String nationality) {
+        System.out.println(String.format("The person's name is %s",nationality));
+    }
+
+    @And("the person's age is {string}")
+    public void hisHerAgeIsAge(String age) {
+        System.out.println(String.format("The person's age is %s",age));
+    }
+
 }

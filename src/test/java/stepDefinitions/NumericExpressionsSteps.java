@@ -25,25 +25,11 @@ public class NumericExpressionsSteps {
 
     @Then("I'd like to verify that the expected result is {double}")
     public void iDLikeToVerifyThatTheResultIs(double expectedResult) {
-        Assert.assertEquals(expectedResult, context.result,0);
-    }
-
-    @Given("I wanna find the sum of {double} and {double}")
-    public void iWannaFindTheSumOfAnd(double value1, double value2) {
-        context = new Context(new SumCalculatorHelper());
-        double result = context.calculate(value1,value2);
-        System.out.println(String.format("The sum of %s and %s is %s", value1, value2, result));
-    }
-    @Given("I wanna find the difference of {double} and {double}")
-    public void iWannaFindTheDiffOfAnd(double value1, double value2) {
-        context = new Context(new DifferenceCalculatorHelper());
-        double result = context.calculate(value1,value2);
-        System.out.println(String.format("The diff of %s and %s is %s", value1, value2, result));
-    }
-
-    @ParameterType("sum|difference")
-    public String calculatorType(String value){
-        return value;
+        Assert.assertEquals(expectedResult, context.getResult(),0);
+        if(context.getResult() == expectedResult)
+            System.out.println("The test has passed");
+        else
+            System.out.println("The test has failed");
     }
 
     @Given("I have the following columns with numbers and I'd like to find the {calculatorType} for each column and to compare them")
@@ -87,5 +73,10 @@ public class NumericExpressionsSteps {
             else
                 System.out.println("The calculated differences for both columns are equal");
         }
+    }
+
+    @ParameterType("sum|difference")
+    public String calculatorType(String value){
+        return value;
     }
 }

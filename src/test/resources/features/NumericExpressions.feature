@@ -26,7 +26,3 @@ Feature: "Numeric Expressions" test examples from third Cucumber story.
         | input1 | input2 | expected |
         | 10     | 6      | 4        |
         | 7.5    | 2.5    | 5        |
-
-    Scenario: Try
-      Given I want to find the sum of 3 and 5
-      Then I'd like to verify that the expected result is 8

@@ -31,13 +31,13 @@ public class Context {
 
     public Context (Calculator calculator){
         this.calculator = calculator;
-        //this.firstValue = this.secondValue = this.setResult(0);
         this.setFirstValue(0);
         this.setSecondValue(0);
         this.setResult(0);
     }
     public double calculate(double num1, double num2){
-        setResult(calculator.calculate(num1, num2));
-        return calculator.calculate(num1, num2);
+        double result = calculator.calculate(num1, num2);
+        setResult(result);
+        return result;
     }
 }

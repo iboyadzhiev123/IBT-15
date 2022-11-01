@@ -12,9 +12,10 @@ public class DataTableExamplesSteps {
     @Given("I have the following student names")
     public void iHaveTheFollowingStudentNames(DataTable dataTable) {
         List<String> students = dataTable.asList();
-        for(String student : students)
-            System.out.println(String.format("The student %s is properly signed up for the next semester",student));
+        for (String student : students)
+            System.out.println(String.format("The student %s is properly signed up for the next semester", student));
     }
+
     @Then("I print them on the screen and we're all happy")
     public void iPrintThemOnTheScreen() {
         System.out.println("They're all printed on the screen");
@@ -23,7 +24,7 @@ public class DataTableExamplesSteps {
     @Given("I have the following usernames and credentials")
     public void iHaveTheFollowingUsernamesAndCredentials(DataTable dataTable) {
         Map<String, String> usersAndCreds = dataTable.asMap();
-        for (Map.Entry<String,String> entry : usersAndCreds.entrySet())
+        for (Map.Entry<String, String> entry : usersAndCreds.entrySet())
             System.out.println(String.format("User %s has a %s password", entry.getKey(), entry.getValue()));
     }
 

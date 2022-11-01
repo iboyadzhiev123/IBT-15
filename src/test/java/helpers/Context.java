@@ -7,18 +7,27 @@ public class Context {
     private double secondValue;
     private double result;
 
-    public void setFirstValue(double value){
-        this.firstValue = value;
+    public Context(Calculator calculator) {
+        this.calculator = calculator;
+        this.setFirstValue(0);
+        this.setSecondValue(0);
+        this.setResult(0);
     }
-    public double getFirstValue(){
+
+    public double getFirstValue() {
         return this.firstValue;
     }
 
-    public void setSecondValue(double value){
-        this.secondValue = value;
+    public void setFirstValue(double value) {
+        this.firstValue = value;
     }
-    public double getSecondValue(){
+
+    public double getSecondValue() {
         return this.secondValue;
+    }
+
+    public void setSecondValue(double value) {
+        this.secondValue = value;
     }
 
     public double getResult() {
@@ -29,13 +38,7 @@ public class Context {
         this.result = result;
     }
 
-    public Context (Calculator calculator){
-        this.calculator = calculator;
-        this.setFirstValue(0);
-        this.setSecondValue(0);
-        this.setResult(0);
-    }
-    public double calculate(double num1, double num2){
+    public double calculate(double num1, double num2) {
         double result = calculator.calculate(num1, num2);
         setResult(result);
         return result;

@@ -10,7 +10,7 @@ public class AnonExpressionsSteps {
 
     @Given("^I (am|am not) at the registration form$")
     public void iAmAtTheRegistrationForm(String optionalValue) {
-        if(optionalValue.equals("am"))
+        if (optionalValue.equals("am"))
             System.out.println("The user is at the registration form");
         else
             System.out.println("The user is at the beach and doesn't care");
@@ -39,10 +39,10 @@ public class AnonExpressionsSteps {
     @And("I insert {string} as e-mail address")
     public void iInsertAsEMailAddress(String email) {
         String regexPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-        if(Pattern.compile(regexPattern).matcher(email).matches())
-            System.out.println(String.format("A proper email %s has been inserted",email));
+        if (Pattern.compile(regexPattern).matcher(email).matches())
+            System.out.println(String.format("A proper email %s has been inserted", email));
         else
-            System.out.println(String.format("An improper email %s has been inserted",email));
+            System.out.println(String.format("An improper email %s has been inserted", email));
     }
 
     @Then("I don't wanna be bothered")
@@ -52,17 +52,17 @@ public class AnonExpressionsSteps {
 
     @Given("the person's name is {string}")
     public void thePersonsNameIsName(String name) {
-        System.out.println(String.format("The person's name is %s",name));
+        System.out.println(String.format("The person's name is %s", name));
     }
 
     @Then("the person's nationality is {string}")
     public void thePersonsNationalityIsNationality(String nationality) {
-        System.out.println(String.format("The person's name is %s",nationality));
+        System.out.println(String.format("The person's name is %s", nationality));
     }
 
     @And("the person's age is {string}")
     public void hisHerAgeIsAge(String age) {
-        System.out.println(String.format("The person's age is %s",age));
+        System.out.println(String.format("The person's age is %s", age));
     }
 
 }

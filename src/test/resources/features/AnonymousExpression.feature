@@ -9,11 +9,15 @@ Feature: Anonymous expressions scenario from second Training story "IBT-17"
     Scenario: Anonymous expressions scenario with different basic types
       #first test with expressions
       Given I am at the registration form
+      And I am thinking about the following:
+      """
+      Make a mental note to write this down before leaving today
+      """
       When I insert "John Kirilov" name
-      And I insert 40.5 years of age
+      * I insert 40.5 years of age
       Then I set my lucky number as 10
       And I choose Applepie as my secret
-      And I insert "john65@yahoo.com" as e-mail address
+      But I insert "john65@yahoo.com" as e-mail address
 
     @testExpressions
     Scenario: Negative scenario

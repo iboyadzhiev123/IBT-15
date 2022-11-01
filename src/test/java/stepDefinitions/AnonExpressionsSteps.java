@@ -65,4 +65,8 @@ public class AnonExpressionsSteps {
         System.out.println(String.format("The person's age is %s", age));
     }
 
+    @And("I am thinking about the following:")
+    public void iAmThinkingAboutTheFollowing(String note) {
+        System.out.println(String.format("The person thinks about %s", note));
+    }
 }

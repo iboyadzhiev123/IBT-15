@@ -25,11 +25,11 @@ public class NumericExpressionsSteps {
 
     @Then("I'd like to verify that the expected result is {double}")
     public void iDLikeToVerifyThatTheResultIs(double expectedResult) {
-        Assert.assertEquals(expectedResult, context.getResult(),0);
         if(context.getResult() == expectedResult)
             System.out.println("The test has passed");
         else
             System.out.println("The test has failed");
+        Assert.assertEquals(expectedResult, context.getResult(),0);
     }
 
     @Given("I have the following columns with numbers and I'd like to find the {calculatorType} for each column and to compare them")
@@ -40,8 +40,6 @@ public class NumericExpressionsSteps {
             sumFirst = sumSecond = 0;
             List<List<Double>> rows = dataTable.asLists(Double.class);
             for (List<Double> columns : rows) {
-                //sumFirst += columns.get(0);
-                //sumSecond += columns.get(1);
                 sumFirst = context.calculate(sumFirst,columns.get(0));
                 sumSecond = context.calculate(sumSecond,columns.get(1));
             }
@@ -60,8 +58,6 @@ public class NumericExpressionsSteps {
             diffFirst = rows.get(0).get(0);
             diffSecond = rows.get(0).get(1);
             for(int i=1;i<rows.size();i++){
-                //diffFirst -= rows.get(i).get(0);
-                //diffSecond -= rows.get(i).get(1);
                 diffFirst = context.calculate(diffFirst,rows.get(i).get(0));
                 diffSecond = context.calculate(diffSecond,rows.get(i).get(1));
             }

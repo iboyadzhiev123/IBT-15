@@ -26,8 +26,8 @@ public class AnonExpressionsSteps {
         System.out.println(String.format("Age %s has been inserted", age));
     }
 
-    @And("I my lucky number is {int}")
-    public void iMyLuckyNumberIs(int luckyNumber) {
+    @And("I set my lucky number as {int}")
+    public void iSetMyLuckyNumberAs(int luckyNumber) {
         System.out.println(String.format("Lucky number %s has been inserted", luckyNumber));
     }
 

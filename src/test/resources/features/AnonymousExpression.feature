@@ -11,7 +11,7 @@ Feature: Anonymous expressions scenario from second Training story "IBT-17"
       Given I am at the registration form
       When I insert "John Kirilov" name
       And I insert 40.5 years of age
-      Then I my lucky number is 10
+      Then I set my lucky number as 10
       And I choose Applepie as my secret
       And I insert "john65@yahoo.com" as e-mail address
 

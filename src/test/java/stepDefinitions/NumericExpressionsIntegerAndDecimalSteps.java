@@ -46,7 +46,8 @@ public class NumericExpressionsIntegerAndDecimalSteps {
         this.result = calcInstance.calculate(this.firstValue, this.secondValue);
         this.expectedResult = expectedResult;
         System.out.println(String.format("The int result is: %s and the expected result is %s", result, expectedResult));
-        Assert.assertEquals(result, expectedResult, 0);
+        //Assert.assertEquals(result, expectedResult, 0);
+        Assert.assertEquals("The expected and actual integer results are different", result, expectedResult, 0);
     }
 
     @Given("the first dec value is {double}")
@@ -66,18 +67,8 @@ public class NumericExpressionsIntegerAndDecimalSteps {
         this.result = calcInstance.calculate(this.firstValue, this.secondValue);
         this.expectedResult = expectedResult;
         System.out.println(String.format("The dec result is: %s and the expected result is %s", result, expectedResult));
-        Assert.assertEquals(result, expectedResult, 0);
-    }
-
-    @ParameterType("sum|difference")
-    public String calcType(String value) {
-        helpers.Calculator calc;
-        if (value.equals("sum"))
-            calc = new SumCalculatorHelper();
-        else
-            calc = new DifferenceCalculatorHelper();
-        this.calcInstance = calc;
-        return value;
+        //Assert.assertEquals(result, expectedResult, 0);
+        Assert.assertEquals("The expected and actual decimal results are different", result, expectedResult, 0);
     }
 
     @Given("I have the following columns with integers to sum")
@@ -112,7 +103,7 @@ public class NumericExpressionsIntegerAndDecimalSteps {
             System.out.println("The sums for both columns are equal");
     }
 
-    @Given("I have the following columns with decimals to sum")
+    @Given("I have the following column(s) with decimals to sum")
     public void iHaveTheFollowingColumnsWithDecimalsToSum(DataTable dataTable) {
         List<List<Double>> rows = dataTable.asLists(Double.class);
         for (List<Double> columns : rows) {
@@ -133,6 +124,7 @@ public class NumericExpressionsIntegerAndDecimalSteps {
         }
         System.out.println(String.format("The difference for first column is %s\nThe difference for second column is %s", decCalcFirst, decCalcSecond));
     }
+
     @And("I'd like to find out which decimal column has a bigger calculation")
     public void iDLikeToFindOutWhichDecimalIntegerColumnHasABiggerCalculation() {
         if (decCalcFirst > decCalcSecond)
@@ -141,5 +133,16 @@ public class NumericExpressionsIntegerAndDecimalSteps {
             System.out.println("The second column has a bigger calculation");
         else
             System.out.println("The sums for both columns are equal");
+    }
+
+    @ParameterType("sum|difference")
+    public String calcType(String value) {
+        Calculator calc;
+        if (value.equals("sum"))
+            calc = new SumCalculatorHelper();
+        else
+            calc = new DifferenceCalculatorHelper();
+        this.calcInstance = calc;
+        return value;
     }
 }

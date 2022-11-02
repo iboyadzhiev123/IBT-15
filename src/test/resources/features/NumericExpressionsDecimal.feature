@@ -13,7 +13,7 @@ Feature: "Numeric Expressions" with Decimals from third Cucumber story.
       Examples:
         | input1 | input2 | expected |
         | 1.2    | 3.0    | 4.2      |
-        | 7.5    | 2.5    | 10       |
+        | 7.5    | 2.5    | 100      |
 
     @testNumericDecimalDataTable
     Scenario: Decimal scenario with Data Table and sum
@@ -39,6 +39,6 @@ Feature: "Numeric Expressions" with Decimals from third Cucumber story.
     @testNumericDecimalDataTable
     Scenario: Decimal scenario with Data Table and sum
       Given I have the following columns with decimals to subtract
-        | 10 | 18 |
-        | 4  | 5  |
+        | 10.3 | 18  |
+        | 4    | 5.6 |
       And I'd like to find out which decimal column has a bigger calculation

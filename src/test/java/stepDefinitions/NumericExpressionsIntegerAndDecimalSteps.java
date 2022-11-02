@@ -24,7 +24,8 @@ public class NumericExpressionsIntegerAndDecimalSteps {
     public double decCalcSecond;
 
     @Given("I set the calculator type to {calcType}")
-    public void iSetTheCalculatorTypeToSum(String calculator) {
+    public void iSetTheCalculatorTypeToSum(Calculator calculator) {
+        calcInstance = calculator;
     }
 
     @Given("the first int value is {int}")
@@ -67,7 +68,6 @@ public class NumericExpressionsIntegerAndDecimalSteps {
         this.result = calcInstance.calculate(this.firstValue, this.secondValue);
         this.expectedResult = expectedResult;
         System.out.println(String.format("The dec result is: %s and the expected result is %s", result, expectedResult));
-        //Assert.assertEquals(result, expectedResult, 0);
         Assert.assertEquals("The expected and actual decimal results are different", result, expectedResult, 0);
     }
 
@@ -136,13 +136,8 @@ public class NumericExpressionsIntegerAndDecimalSteps {
     }
 
     @ParameterType("sum|difference")
-    public String calcType(String value) {
-        Calculator calc;
-        if (value.equals("sum"))
-            calc = new SumCalculatorHelper();
-        else
-            calc = new DifferenceCalculatorHelper();
-        this.calcInstance = calc;
-        return value;
+    public Calculator calcType(String value) {
+        Calculator calc = (value.equals("sum")) ? new SumCalculatorHelper() : new DifferenceCalculatorHelper();
+        return calc;
     }
 }

@@ -14,6 +14,8 @@ public class PropertiesHelper {
         caseSensitive = value;
     }
 
+    //a method which currently isn't used anywhere. Leaving it for now in case somthing like that is
+    // needed in the future
     public static String getValue(String propKey) {
         String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         String appConfigPath = rootPath + "config.properties";

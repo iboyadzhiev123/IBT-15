@@ -37,7 +37,7 @@ Feature: "Text Expressions" test examples from fourth Cucumber story.
   Scenario: Test scenario with "Text Expressions" and char count in a sentence
     Given I pass the following text:
     """
-    Not really my cup of tea
+    Not really my cup of tea. I prefer other things.
     """
     When I get the char count
-    Then I verify the count is equal to 24
+    Then I verify the count is equal to 48

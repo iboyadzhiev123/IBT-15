@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(plugin = {"pretty"},
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        tags = "@testNumericInteger"
+        tags = "@testTextExpressions"
 )
 public class TestRunner {
 }

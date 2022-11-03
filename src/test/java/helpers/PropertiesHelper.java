@@ -40,15 +40,4 @@ public class PropertiesHelper {
         }
     }
 
-    public static void main(String args[])  //static method
-    {
-        //just a try
-        System.out.println(String.format("version: %s", PropertiesHelper.getValue("version")));
-        System.out.println(String.format("capsLock: %s", PropertiesHelper.getValue("capsLock")));
-        System.out.println(String.format("date: %s", PropertiesHelper.getValue("date")));
-        //System.out.println(String.format("caseSensitive: %s", PropertiesHelper.getValue("caseSensitive")));
-        initialize();
-        System.out.println(String.format("caseSensitive: %s", getCaseSensitive()));
-    }
-
 }

@@ -22,12 +22,12 @@ public class TextExpressionsSteps {
         PropertiesHelper.initialize();
     }
 
-    @Given("The first word is {string}")
+    @Given("The first word is {word}")
     public void theFirstWordIs(String word) {
         firstWord = word;
     }
 
-    @And("The second word is {string}")
+    @And("The second word is {word}")
     public void theSecondWordIs(String word) {
         secondWord = word;
     }
@@ -54,8 +54,8 @@ public class TextExpressionsSteps {
         Assert.assertTrue("The sentences are not equal. Check you sentence values and the caseSensitivity setting", areEqual);
     }
 
-    @Given("I pass the following text:")
-    public void iPassTheFollowingText(String passedParagraph) {
+    @Given("I pass the following text/paragraph :")
+    public void iPassTheFollowingTextOrParagraph(String passedParagraph) {
         paragraph = passedParagraph;
     }
 

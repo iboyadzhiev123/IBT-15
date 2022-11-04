@@ -21,7 +21,7 @@ Feature: "Text Expressions" test examples from fourth Cucumber story.
 
   @testTextExpressionsWordCount
   Scenario: Test scenario with "Text Expressions" and word count in a sentence
-    Given I pass the following text:
+    Given I pass the following paragraph :
     """
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
     ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -35,7 +35,7 @@ Feature: "Text Expressions" test examples from fourth Cucumber story.
 
   @testTextExpressionsCharCount
   Scenario: Test scenario with "Text Expressions" and char count in a sentence
-    Given I pass the following text:
+    Given I pass the following text :
     """
     Not really my cup of tea. I prefer other things.
     """

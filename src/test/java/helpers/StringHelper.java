@@ -20,5 +20,12 @@ public class StringHelper {
         return text.length();
     }
 
+    public static String removeCharFirst(String word, char charToBeRemoved) {
+        return word.replaceFirst(Character.toString(charToBeRemoved), "");
+    }
+    public static String removeAll(String word, char charToBeRemoved) {
+        return word.replaceAll(Character.toString(charToBeRemoved), "");
+    }
+
 }
 

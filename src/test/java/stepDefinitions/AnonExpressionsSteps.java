@@ -69,4 +69,5 @@ public class AnonExpressionsSteps {
     public void iAmThinkingAboutTheFollowing(String note) {
         System.out.println(String.format("The person thinks about %s", note));
     }
+
 }

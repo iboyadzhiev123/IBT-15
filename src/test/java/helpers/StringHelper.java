@@ -21,9 +21,17 @@ public class StringHelper {
     }
 
     public static String removeCharFirst(String word, char charToBeRemoved) {
+        String regex = "\\" + charToBeRemoved;
+        return word.replaceFirst(regex, "");
+    }
+    public static String removeNormalCharFirst(String word, char charToBeRemoved) {
         return word.replaceFirst(Character.toString(charToBeRemoved), "");
     }
     public static String removeAll(String word, char charToBeRemoved) {
+        String regex = "\\" + charToBeRemoved;
+        return word.replaceAll(regex, "");
+    }
+    public static String removeNormalAll(String word, char charToBeRemoved) {
         return word.replaceAll(Character.toString(charToBeRemoved), "");
     }
 

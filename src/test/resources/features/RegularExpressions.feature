@@ -40,12 +40,24 @@ Feature: Extending StringHelper tests with RegEx steps
 
   Scenario: Compare sentences when first occurrence of ()[]{}: is removed
     Given first sentence is "Cucumber is amazing()[]{}:()[]{}:"
-    #And first occurrence of ( is removed from a sentence
-    #And first occurrence of ) is removed from a sentence
-    #And first occurrence of [ is removed from a sentence
-    #And first occurrence of ] is removed from a sentence
+    And first occurrence of ( is removed from a sentence
+    And first occurrence of ) is removed from a sentence
+    And first occurrence of [ is removed from a sentence
+    And first occurrence of ] is removed from a sentence
     And first occurrence of { is removed from a sentence
-    #And first occurrence of } is removed from a sentence
-    #And first occurrence of : is removed
-    #When second sentence is "cucumber is amazing[]:()[]{}:"
-    #Then we verify that the sentences are equal
+    And first occurrence of } is removed from a sentence
+    And first occurrence of : is removed from a sentence
+    When second sentence is "cucumber is amazing()[]{}:"
+    Then we verify that the sentences are equal
+
+  Scenario: Compare sentences when all occurrence of .?!;,-' are removed
+    Given first sentence is "Cucumber is amazing.?!;,-'.?!;,-'"
+    And all occurrences of . are removed from a sentence
+    And all occurrences of ? are removed from a sentence
+    And all occurrences of ! are removed from a sentence
+    And all occurrences of ; are removed from a sentence
+    And all occurrences of , are removed from a sentence
+    And all occurrences of - are removed from a sentence
+    And all occurrences of ' are removed from a sentence
+    When second sentence is "cucumber is amazing"
+    Then we verify that the sentences are equal

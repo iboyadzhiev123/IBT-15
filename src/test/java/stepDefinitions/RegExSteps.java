@@ -25,9 +25,9 @@ public class RegExSteps {
         firstWord = word;
     }
 
-    @And("^first occurrence of ([a-z]|[A-Z]|[0-9]|[(,),{,}]) is removed$")
+    @And("^first occurrence of ([a-z]|[A-Z]|[0-9]) is removed$")
     public void firstOccurrenceOfAIsRemoved(char charToBeRemoved) {
-        firstWord = StringHelper.removeCharFirst(firstWord, charToBeRemoved);
+        firstWord = StringHelper.removeNormalCharFirst(firstWord, charToBeRemoved);
     }
 
 //    @When("the second word is {word}")
@@ -44,7 +44,8 @@ public class RegExSteps {
 
     @And("^all occurrences of ([a-z]|[A-Z]|[0-9]) are removed$")
     public void allOccurrencesOfAreRemoved(char charToBeRemoved) {
-        firstWord = StringHelper.removeAll(firstWord, charToBeRemoved);
+        firstWord = StringHelper.removeNormalAll(firstWord, charToBeRemoved);
+        //firstWord = StringHelper.remove(firstWord, charToBeRemoved);
     }
 
     @Given("first sentence is {string}")
@@ -64,7 +65,7 @@ public class RegExSteps {
         Assert.assertTrue("The sentences are not equal. Check you sentence values and the caseSensitivity setting", areEqual);
     }
 
-    @And("^first occurrence of ([a-z]|[A-Z]|[0-9]|[(,),{,}]) is removed from a sentence$")
+    @And("^first occurrence of ([a-z]|[A-Z]|[0-9]|[\\:,\\(,\\),\\{,\\},\\[,\\]]) is removed from a sentence$")
     public void firstOccurrenceOfIsRemovedFromASentence(char charToBeRemoved) {
         firstSentence = StringHelper.removeCharFirst(firstSentence, charToBeRemoved);
     }
@@ -72,5 +73,10 @@ public class RegExSteps {
     @When("^the second word is ([a-zA-Z0-9]*)$")
     public void theSecondWordWouldBe(String word) {
         this.secondWord = word;
+    }
+
+    @And("^all occurrences of ([a-z]|[A-Z]|[0-9]|[\\.,\\?,\\!,\\;,\\,,\\-,\\']) are removed from a sentence$")
+    public void allOccurrencesOfAreRemovedFromASentence(char charToBeRemoved) {
+        firstSentence = StringHelper.removeAll(firstSentence, charToBeRemoved);
     }
 }

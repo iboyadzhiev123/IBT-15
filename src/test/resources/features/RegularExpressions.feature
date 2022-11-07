@@ -11,7 +11,6 @@ Feature: Extending StringHelper tests with RegEx steps
   Rule: Extend word tests with RegEx
 
   Scenario: Compare words when first occurrence of any capital or small letter is removed
-    #Given the first word is "CucumberaazzAAZZ"
     Given the first word is CucumberaazzAAZZ
     And first occurrence of a is removed
     And first occurrence of z is removed
@@ -61,3 +60,27 @@ Feature: Extending StringHelper tests with RegEx steps
     And all occurrences of ' are removed from a sentence
     When second sentence is "cucumber is amazing"
     Then we verify that the sentences are equal
+
+  Rule: Extend word and char count tests with RegEx
+
+    Background:
+      Given input text
+      """
+          Lorem ipsum dolor sit amet  ,   consectetur adipiscing elit  , sed do    eiusmod tempor incididunt ut labore et    dolore magna aliqua .
+          Ut enim ad minim veniam ? Quis nostrud exercitation  ullamco laboris nisi ut aliquip ex ea commodo consequat .
+
+
+          Duis aute irure dolor in reprehenderit in  voluptate  -  velit esse   cillum   dolore eu fugiat nulla pariatur ?
+          Excepteur sint  occaecat cupidatat non  proident, sunt in culpa qui officia deserunt mollit anim id est laborum !
+      """
+
+    @count
+    Scenario: Verify the count of words and chars in a text
+      When all whitespaces before , are removed
+      And all whitespaces before . are removed
+      And all whitespaces before - are removed
+      And all whitespaces before ? are removed
+      And all whitespaces before ! are removed
+      And all consecutive whitespace chars are replaced with a single space
+      Then I verify the input text word count is equal to 70
+      And I verify the input text char count is equal to 447

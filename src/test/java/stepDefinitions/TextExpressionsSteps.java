@@ -22,12 +22,12 @@ public class TextExpressionsSteps {
         PropertiesHelper.initialize();
     }
 
-    @Given("The first word is {word}")
+    @Given("the first word is {word}")
     public void theFirstWordIs(String word) {
         firstWord = word;
     }
 
-    @And("The second word is {word}")
+    @And("the second word is {word}")
     public void theSecondWordIs(String word) {
         secondWord = word;
     }
@@ -35,15 +35,16 @@ public class TextExpressionsSteps {
     @Then("I verify that the words are equal")
     public void iVerifyThatTheWordsAreEqual() {
         boolean areEqual = StringHelper.areWordsEqual(firstWord, secondWord, PropertiesHelper.getCaseSensitive());
+        System.out.println(String.format("First word: %s Second word: %s", firstWord, secondWord));
         Assert.assertTrue("The words are not equal. Check your word values and the caseSensitivity setting", areEqual);
     }
 
-    @Given("The first sentence is {string}")
+    @Given("the first sentence is {string}")
     public void theFirstSentenceIs(String sentence) {
         firstSentence = sentence;
     }
 
-    @When("The second sentence is {string}")
+    @When("the second sentence is {string}")
     public void theSecondSentenceIs(String sentence) {
         secondSentence = sentence;
     }
@@ -51,6 +52,7 @@ public class TextExpressionsSteps {
     @Then("I verify that the sentences are equal")
     public void iVerifyThatTheSentencesAreEqual() {
         boolean areEqual = StringHelper.areSentencesEqual(firstSentence, secondSentence, PropertiesHelper.getCaseSensitive());
+        System.out.println(String.format("First sentence: %s Second sentence: %s", firstSentence, secondSentence));
         Assert.assertTrue("The sentences are not equal. Check you sentence values and the caseSensitivity setting", areEqual);
     }
 
@@ -67,5 +69,35 @@ public class TextExpressionsSteps {
     @Then("I verify the count is equal to {int}")
     public void iVerifyTheCountIsEqualTo(int count) {
         Assert.assertEquals("The count is different than the expected.", wordOrCharCount, count);
+    }
+
+    @And("^first occurrence of ([a-z]|[A-Z]) is removed$")
+    public void firstOccurrenceOfAIsRemoved(char charToBeRemoved) {
+        firstWord = StringHelper.removeNormalCharFirst(firstWord, charToBeRemoved);
+    }
+
+    @And("^all occurrences of ([0-9]) are removed$")
+    public void allOccurrencesOfAreRemoved(char charToBeRemoved) {
+        firstWord = StringHelper.removeNormalAll(firstWord, charToBeRemoved);
+    }
+
+    @And("^first occurrence of ([\\:,\\(,\\),\\{,\\},\\[,\\]]) is removed from a sentence$")
+    public void firstOccurrenceOfIsRemovedFromASentence(char charToBeRemoved) {
+        firstSentence = StringHelper.removeCharFirst(firstSentence, charToBeRemoved);
+    }
+
+    @And("^all occurrences of ([\\.,\\?,\\!,\\;,\\,,\\-,\\']) are removed from a sentence$")
+    public void allOccurrencesOfAreRemovedFromASentence(char charToBeRemoved) {
+        firstSentence = StringHelper.removeAll(firstSentence, charToBeRemoved);
+    }
+
+    @When("^all whitespaces before ([\\.,\\?,\\!,\\,,\\-,\\:]) are removed$")
+    public void allWhitespacesBeforeAreRemoved(char charWithSpaces) {
+        paragraph = StringHelper.removeAllSpacesBeforeChar(paragraph, charWithSpaces);
+    }
+
+    @And("all consecutive whitespace chars are replaced with a single space")
+    public void allConsecutiveWhitespaceCharsAreReplacedWithASingleSpace() {
+        paragraph = StringHelper.replaceAllMultipleWhitespaces(paragraph);
     }
 }

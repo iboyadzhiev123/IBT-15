@@ -47,7 +47,7 @@ public class StringHelper {
 
     public static String replaceAllMultipleWhitespaces(String text) {
         String space = " ";
-        String regex = "(\\s)+(\\s)";
+        String regex = "\\s+";
         String result = text.replaceAll(regex, space);
         System.out.println(String.format("Trimmed text: %s", result));
         return result;
